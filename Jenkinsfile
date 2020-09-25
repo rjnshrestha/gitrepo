@@ -1,10 +1,17 @@
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Build Application') {
             steps {
-                sh 'python --version'
-                sh 'echo "hello"'
+                sh 'mvn clean package'
+            }
+            post {
+                success{
+                    echo "Now Archiving the Artifacts ..."
+                    echo "==============================="
+                    archiveArtifacts artifcats: '**/*.jar'
+                    echo "==============================="
+                }
             }
         }
     }
