@@ -9,7 +9,7 @@ pipeline {
                 success{
                     echo "Now Archiving the Artifacts ..."
                     echo "==============================="
-                    archiveArtifacts artifcats: '**/*.jar'
+                    archiveArtifacts artifacts: '**/*.jar'
                     echo "==============================="
                 }
             }
